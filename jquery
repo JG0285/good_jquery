@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Filtering</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .filter-buttons {
+            margin-bottom: 20px;
+        }
+
+        .content-item {
+            display: none;
+        }
+
+        .content-item img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 class="mt-4 mb-4">Content Filtering</h1>
+
+    <div class="filter-buttons">
+        <button class="btn btn-primary filter-button" data-category="all">All</button>
+        <button class="btn btn-primary filter-button" data-category="animals">Animals</button>
+        <button class="btn btn-primary filter-button" data-category="nature">Nature</button>
+        <button class="btn btn-primary filter-button" data-category="food">Food</button>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-4 col-md-6 content-item" data-category="animals">
+            <img src="animal_image.jpg" alt="Animal">
+            <h3>Beautiful Animal</h3>
+            <p>This is an amazing animal.</p>
+        </div>
+        <div class="col-lg-4 col-md-6 content-item" data-category="nature">
+            <img src="nature_image.jpg" alt="Nature">
+            <h3>Scenic Nature</h3>
+            <p>Enjoy the beauty of nature.</p>
+        </div>
+        <div class="col-lg-4 col-md-6 content-item" data-category="food">
+            <img src="food_image.jpg" alt="Food">
+            <h3>Delicious Food</h3>
+            <p>Explore tasty dishes.</p>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Initial state: Show all content items
+        $('.content-item').show();
+
+        // Filter button click event
+        $('.filter-button').click(function () {
+            var category = $(this).data('category');
+
+            // Show all content items when "All" is selected
+            if (category === 'all') {
+                $('.content-item').show();
+            } else {
+                // Hide all content items
+                $('.content-item').hide();
+                // Show content items with the selected category
+                $('.content-item[data-category="' + category + '"]').show();
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
